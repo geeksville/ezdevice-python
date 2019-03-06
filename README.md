@@ -4,7 +4,7 @@ This project is in alpha test - you probably don't want this yet.
 
 # Installation
 
-You can install this package with the pip utility (this project requires python 3):
+You can install this package with the [pip utility](https://pypi.org/project/ezdevice/) (this project requires python 3):
 
 pip install ezdevice-python
 
@@ -22,6 +22,53 @@ Where boardtype is a single letter:
 - O for the TTGO with a 18650 battery and OLED screen (I'm not sure if this has a model number)
 
 Support for other device types will be released soon.
+
+Example session:
+
+```
+mymachine:~$ ezdevice --install L
+Downloading firmware for board type L from https://joyfirmware.s3.amazonaws.com/firmware-L.bin
+esptool.py v2.6
+Found 1 serial ports
+Serial port /dev/ttyUSB0
+Connecting......
+Detecting chip type... ESP32
+Chip is ESP32D0WDQ6 (revision 1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+MAC: XXX
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 921600
+Changed.
+Configuring flash size...
+Auto-detected Flash size: 4MB
+Compressed 926960 bytes to 509378...
+Wrote 926960 bytes (509378 compressed) at 0x00010000 in 8.3 seconds (effective 898.4 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+esptool.py v2.6
+Found 1 serial ports
+Serial port /dev/ttyUSB0
+Connecting........_
+Detecting chip type... ESP32
+Chip is ESP32D0WDQ6 (revision 1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+MAC: XXX
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 921600
+Changed.
+Erasing region (may be slow depending on size)...
+Erase completed successfully in 3.4 seconds.
+Hard resetting via RTS pin...
+No preconfigured wifi settings found
+  Please use your phone to connect to the wifi from your new device and tell it your wifi settings
+  The SSID will be EZdevice-XXXX
+```
 
 # Author
 

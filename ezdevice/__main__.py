@@ -1,4 +1,4 @@
-# __main__.py
+#!python
 
 from configparser import ConfigParser
 import sys
