@@ -1,0 +1,4 @@
+eeprom.bin
+nvs.bin
+firmware.bin
+__pycache__
