@@ -16,10 +16,12 @@ ezdevice --install BOARDTYPE
 
 Where boardtype is a single letter:
 
-- L for the TTGO T5 with a 2.13" screen
-- M for the TTGO T5s
+- L for the TTGO T5 with a 2.13" eink screen
+- K for the TTGO T5 with a 2.9" two color eink screen
+- M for the TTGO T5s with a two color eink screen
 - R for the TTGO T4
 - O for the TTGO with a 18650 battery and OLED screen (I'm not sure if this has a model number)
+- G for the TTGO GROW plant sensor
 
 Support for other device types will be released soon.
 

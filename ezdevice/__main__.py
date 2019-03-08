@@ -48,7 +48,7 @@ def main():
     """Perform command line ezdevice operations"""
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--install", choices=['R', 'L', 'M', 'O'], help="Install the ezdevice code onto a new device (you must select the board type letter - see README.md)")
+    parser.add_argument("--install", choices=['R', 'L', 'M', 'O', 'G', 'K'], help="Install the ezdevice code onto a new device (you must select the board type letter - see README.md)")
     parser.add_argument("--readee", action="store_true", help="Extract the eeprom contents from the device, so it can be programmed onto other boards")
     args = parser.parse_args()
     if args.install:
