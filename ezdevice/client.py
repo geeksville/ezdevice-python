@@ -4,11 +4,14 @@ import sys
 import urllib.request
 import esptool
 import os.path
+import requests
 
 # FIXME - clean these files up - store in a temp directory
 bucketname = "joyfirmware"
 eefile = "eeprom.bin"
 nvsfile = "nvs.bin"
+
+urlroot = 'http://api.ezdevice.net'
 
 
 def runEsptool(args):
@@ -50,7 +53,16 @@ class EZDeviceClient:
         runEsptool(["read_flash", "0x290000", "0x1000", eefile])
         runEsptool(["read_flash", "0x9000", "0x5000", nvsfile])
 
-    def displayfile(self, target, filepath):
+    def displayfile(self, devid, filepath):
         """Show the indicated file on the display"""
         # FIXME, set the app owner for the device to something other than joyframe
         print("not yet implemented")
+        with open(filepath) as fh:
+            mydata = fh.read()
+            response = requests.put("{}/ezdevs/{}".format(urlroot, devid),
+                                    data=mydata,
+                                    auth=('omer', 'b01ad0ce'),
+                                    headers={'content-type': 'text/plain'},
+                                    params={'file': filepath}
+                                    )
+            print("response", response)

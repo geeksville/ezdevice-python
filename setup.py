@@ -25,7 +25,7 @@ setup(
     ],
     packages=["ezdevice"],
     include_package_data=True,
-    install_requires=["esptool"],
+    install_requires=["esptool", "requests"],
     python_requires='>=3',
     entry_points={
         "console_scripts": [
