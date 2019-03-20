@@ -2,6 +2,7 @@
 
 import argparse
 from .client import EZDeviceClient
+import logging
 
 
 def main():
@@ -21,7 +22,9 @@ def main():
         "--displayfile", help="display a text,html,png,svg or jpeg file on the display")
     # parser.add_argument("--displayURL", help="display a text,html,png,svg or jpeg from the web on the device")
     parser.add_argument(
-        "--release", help="Mark that this device is no longer being used for custom development (i.e. return to joyframe demo app)")
+        "--claim", help="Mark that this device is no longer being used for custom development", action="store_true")
+    parser.add_argument(
+        "--release", help="Mark that this device is no longer being used for custom development (i.e. return to joyframe demo app)", action="store_true")
 
     # Operations for server backend developers
     parser.add_argument("--localserve", help="Talk to a development server",
@@ -29,6 +32,7 @@ def main():
 
     args = parser.parse_args()
 
+    logging.basicConfig(level=logging.DEBUG)
     client = EZDeviceClient(not args.localserve)
 
     if args.install:
@@ -36,8 +40,12 @@ def main():
     elif args.readee:
         client.readEEprom()
     elif args.target:
+        if args.claim:
+            client.claim(args.target)
         if args.displayfile:
             client.displayfile(args.target, args.displayfile)
+        if args.release:
+            client.release(args.target)
     else:
         parser.print_help()
 
