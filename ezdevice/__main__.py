@@ -6,8 +6,6 @@ from .client import EZDeviceClient
 
 def main():
     """Perform command line ezdevice operations"""
-    client = EZDeviceClient()
-
     parser = argparse.ArgumentParser()
 
     # Operations for manufacturing
@@ -16,7 +14,7 @@ def main():
     parser.add_argument("--readee", action="store_true",
                         help="Extract the eeprom contents from the device, so it can be programmed onto other boards")
 
-    # Operations for developers
+    # Operations for app developers
     parser.add_argument(
         "--target", help="The device we are controlling given as ID (secretkey will be added later)")
     parser.add_argument(
@@ -25,7 +23,14 @@ def main():
     parser.add_argument(
         "--release", help="Mark that this device is no longer being used for custom development (i.e. return to joyframe demo app)")
 
+    # Operations for server backend developers
+    parser.add_argument("--localserve", help="Talk to a development server",
+                        action="store_true")
+
     args = parser.parse_args()
+
+    client = EZDeviceClient(not args.localserve)
+
     if args.install:
         client.installFirmware(args.install)
     elif args.readee:

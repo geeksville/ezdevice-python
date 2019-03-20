@@ -5,13 +5,12 @@ import urllib.request
 import esptool
 import os.path
 import requests
+import mimetypes
 
 # FIXME - clean these files up - store in a temp directory
 bucketname = "joyfirmware"
 eefile = "eeprom.bin"
 nvsfile = "nvs.bin"
-
-urlroot = 'http://api.ezdevice.net'
 
 
 def runEsptool(args):
@@ -22,6 +21,10 @@ def runEsptool(args):
 
 class EZDeviceClient:
     """Client nub for talking to EZdevice servers"""
+
+    def __init__(self, isProd=True):
+        """Constructor, !isProd is used only for server development testing"""
+        self.urlRoot = 'http://api.ezdevice.net' if isProd else 'http://localhost:3030'
 
     def installFirmware(self, boardType):
         """Install the latest firmware on a virgin device"""
@@ -57,12 +60,16 @@ class EZDeviceClient:
         """Show the indicated file on the display"""
         # FIXME, set the app owner for the device to something other than joyframe
         print("not yet implemented")
-        with open(filepath) as fh:
+
+        with open(filepath, mode='rb') as fh:
             mydata = fh.read()
-            response = requests.put("{}/ezdevs/{}".format(urlroot, devid),
+            url = "{}/ezdevs/{}/display".format(self.urlRoot, devid)
+            print("uploading to", url)
+            response = requests.put(url,
                                     data=mydata,
-                                    auth=('omer', 'b01ad0ce'),
-                                    headers={'content-type': 'text/plain'},
-                                    params={'file': filepath}
+                                    # auth=('omer', 'b01ad0ce'),
+                                    headers={
+                                        'content-type':  mimetypes.guess_type(filepath)[0]}
+                                    # params={'file': filepath}
                                     )
             print("response", response)
