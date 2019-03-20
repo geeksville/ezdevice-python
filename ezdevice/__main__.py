@@ -29,10 +29,12 @@ def main():
     # Operations for server backend developers
     parser.add_argument("--localserve", help="Talk to a development server",
                         action="store_true")
+    parser.add_argument("--debug", help="Show debug log message",
+                        action="store_true")
 
     args = parser.parse_args()
 
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.DEBUG if args.debug else logging.INFO)
     client = EZDeviceClient(not args.localserve)
 
     if args.install:
