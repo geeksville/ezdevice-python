@@ -29,7 +29,7 @@ class EZDeviceClient:
         self.urlRoot = 'http://api.ezdevice.net' if isProd else 'http://localhost:3030'
 
     def installFirmware(self, boardType):
-        """Install the latest firmware on a virgin device"""
+        """Install the latest firmware on a blank device (connect the device to USB before calling this function)"""
 
         firmwareurl = f"https://{bucketname}.s3.amazonaws.com/firmware-J{boardType}.bin"
         logging.debug(
@@ -54,12 +54,12 @@ class EZDeviceClient:
                          '  The SSID will be EZdevice-XXXX')
 
     def readEEprom(self):
-        """Pull the eeprom contents onto the local filesystem"""
+        """Use USB to extract device EEprom contents onto the local filesystem (used in factory only)"""
         runEsptool(["read_flash", "0x290000", "0x1000", eefile])
         runEsptool(["read_flash", "0x9000", "0x5000", nvsfile])
 
     def claim(self, devid):
-        """Claim this device is being used for custom development (i.e. turn off default applications)"""
+        """Tell the server that this device is being used for custom development (i.e. turn off default applications)"""
 
         return self.__patch(devid, {'application': 'ezdevice-python'})
 

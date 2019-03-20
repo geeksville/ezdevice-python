@@ -8,7 +8,25 @@ You can install this package with the [pip utility](https://pypi.org/project/ezd
 
 pip install ezdevice-python
 
-# Programming new devices
+Once installed you can use this executable either as a command-line tool or as a library for your own python applications.
+
+## Talking to your devices via the web from Python
+
+You can use the [EZDeviceClient class](/doc/ezdevice.client.html) as a wrapper for the REST API exposed by the server.
+Click the link to see the current crude generated HTML documention or see [the source code](/ezdevice/client.py) for
+the current implemention. This library is not yet complete, essentially offering only an API to set the image shown on the screen.
+Send me a note if you'd like to use it and a feature is missing and I'll add it.
+
+All of the API operations are also available from the shell for testing. For instance, the following will show an image on the display.
+
+```
+# show a github logo
+ezdevice --target JXXXX --claim --displayfile github.png
+# show an HTML file
+ezdevice --target JXXXX --claim --displayfile myfile.html
+```
+
+## Programming new devices
 
 This tool _should_ automate the process of installing a ezdevice binary onto a new device. You run it as follows
 

@@ -1,4 +1,5 @@
 
 
-# Alias key classes into the root namespace for this package
+"""Device programming and web API wrapper for EZdevice usage"""
+
 from .client import EZDeviceClient
