@@ -10,7 +10,7 @@ def main():
     parser = argparse.ArgumentParser()
 
     # Operations for manufacturing
-    parser.add_argument("--install", choices=['R', 'L', 'M', 'O', 'G', 'K', 'Y', 'C', 'T'],
+    parser.add_argument("--install", choices=['JR', 'JL', 'JM', 'JO', 'JG', 'JK', 'JY', 'JC', 'JT', 'MB', 'MS'],
                         help="Install the ezdevice code onto a new device (you must select the board type letter - see README.md)")
     parser.add_argument("--readee", action="store_true",
                         help="Extract the eeprom contents from the device, so it can be programmed onto other boards")

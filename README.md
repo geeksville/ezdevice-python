@@ -32,14 +32,19 @@ This tool _should_ automate the process of installing a ezdevice binary onto a n
 
 ezdevice --install BOARDTYPE
 
-Where boardtype is a single letter:
+Where boardtype is a pair of letters:
 
-- L for the TTGO T5 with a 2.13" eink screen
-- K for the TTGO T5 with a 2.9" two color eink screen
-- M for the TTGO T5s with a two color eink screen
-- R for the TTGO T4
-- O for the TTGO with a 18650 battery and OLED screen (I'm not sure if this has a model number)
-- G for the TTGO GROW plant sensor
+- JL for the TTGO T5 with a 2.13" eink screen
+- JK for the TTGO T5 with a 2.9" red and black eink screen
+- JY for the TTGO T5 with a 2.9" yellow and black eink screen
+- JM for the TTGO T5s with a two color eink screen
+- JR for the TTGO T4
+- JO for the TTGO with a 18650 battery and OLED screen (I'm not sure if this has a model number)
+- JG for the TTGO GROW plant sensor
+- JT for the TTGO Camera (the skinny one with no motion sensor)
+- JC for the TTGO Camera (the wider one with bigger screen and a motion sensor)
+- MS for the M5STICK board
+- MB for the M5BASIC board
 
 Support for other device types will be released soon.
 

@@ -31,7 +31,7 @@ class EZDeviceClient:
     def installFirmware(self, boardType):
         """Install the latest firmware on a blank device (connect the device to USB before calling this function)"""
 
-        firmwareurl = f"https://{bucketname}.s3.amazonaws.com/firmware-J{boardType}.bin"
+        firmwareurl = f"https://{bucketname}.s3.amazonaws.com/firmware-{boardType}.bin"
         logging.debug(
             f'Downloading firmware for board type {boardType} from {firmwareurl}')
         localfile = "firmware.bin"
