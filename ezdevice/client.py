@@ -91,7 +91,8 @@ class EZDeviceClient:
         data = json.dumps(patchdict)
         logging.info(f"patching {url} {data}")
         response = requests.patch(url, data=data, headers={
-                                  'content-type': 'application/json'})
+                                  'content-type': 'application/json',
+                                  'accept': 'application/json'})
         logging.info(f"response {response}")
         if response.status_code != 200:
             raise Exception(f"Error from server {response.text}")

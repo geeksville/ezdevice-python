@@ -17,7 +17,7 @@ def main():
 
     # Operations for app developers
     parser.add_argument(
-        "--target", help="The device we are controlling given as ID (secretkey will be added later)")
+        "--target", help="The device we are controlling given as <ID>:<secretkey> (get the secret key at https://www.ezdevice.net/my/devices)")
     parser.add_argument(
         "--displayfile", help="display a text,html,png,svg or jpeg file on the display")
     # parser.add_argument("--displayURL", help="display a text,html,png,svg or jpeg from the web on the device")
